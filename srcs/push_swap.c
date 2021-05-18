@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:15:37 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/05/18 14:59:26 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/05/18 18:23:50 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,51 @@ void	_swap_(t_stack **st, int size, char c)
 	
 // }
 
-// void	_push_to_stack_(t_ps *ps, char *rule)
-// {
+void    _pop_front_(t_stack **st)
+{
+	t_stack *pop;
+	t_stack *ncurr;
+
+	pop = (*st);
+	if (!pop)
+		return ;
+	if (pop->next)
+	{
+		ncurr = pop->next;
+		pop->next = NULL;
+		ncurr->prev = NULL;
+		(*st) = ncurr;
+		free(pop);
+		pop = NULL;
+	}
+	else
+	{
+		free(pop);
+		pop = NULL;
+	}
+}
 	
-// }
-// void    _pop_(t_stack *st, int num)
-// {
-//     printf("pop");
-// }
+void	_push_to_stack_(t_ps *ps, char rule)
+{
+	t_stack *curr_a;
+	t_stack *curr_b;
+	int		tmp;
+	
+	curr_a = ps->s_a;
+	curr_b = ps->s_b;
+	if (ps->s_b && rule == 'a')
+	{
+		tmp = curr_b->num;
+		_push_front_(&curr_a, tmp);
+	}
+	else if (ps->s_a && rule == 'b')
+	{
+		tmp = curr_a->num;
+		_push_front_(&ps->s_b, tmp);
+		_pop_front_(&ps->s_a);
+	}
+}
+
 
 int	_checker_(char *args, int index)
 {
@@ -132,6 +169,7 @@ void	_fill_stack_(t_ps *ps, char **args, int size)
 
 	i = 1;
 	ps->s_a = NULL;
+	ps->s_b = NULL;
 	_swap_(&ps->s_a, 0, 'a');
 	while (i < size)
 	{
@@ -139,12 +177,19 @@ void	_fill_stack_(t_ps *ps, char **args, int size)
 		i++;
 	}
 	_swap_(&ps->s_a, 4, 'a');
-	// _swap_(&ps->s_a, 4);
+	_push_to_stack_(ps, 'b');
+	_push_to_stack_(ps, 'b');
+	// _push_to_stack_(ps, 'b');
 	while(ps->s_a)
 	{
-		// printf("hi");
 		printf("%d ", ps->s_a->num);
 		ps->s_a = ps->s_a->next;
+	}
+	puts("b");
+	while(ps->s_b)
+	{
+		printf("%d ", ps->s_b->num);
+		ps->s_b = ps->s_b->next;
 	}
 }
 
