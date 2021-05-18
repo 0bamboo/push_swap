@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:15:37 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/05/18 01:47:27 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/05/18 14:59:26 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,63 @@ void    _push_front_(t_stack **st, int num)
         curr->next = (*st);
         (*st)->prev = curr;
 		(*st) = curr;
-		puts("hi");
     }
     else
     {
         curr->next = NULL;
         (*st) = curr;
-		puts("hi3");
     }
 }
 
+void	_push_back_(t_stack **st, int num)
+{
+	t_stack	*curr;
+	t_stack	*head;
+
+	head = (*st);
+	curr = malloc(sizeof(t_stack));
+	curr->prev = NULL;
+	curr->num = num;
+	curr->next = NULL;
+	if (!head)
+		(*st) = curr;
+	else
+	{
+		while (head->next)
+			head = head->next;
+		head->next = curr;
+		curr->prev = head;
+	}
+}
+
+void	_swap_(t_stack **st, int size, char c)
+{
+	t_stack *curr;
+	t_stack *tmp;
+	int		t;
+
+	if (size < 2)
+		return ;
+	curr = (*st);
+	tmp = curr->next;
+	t = tmp->num;
+	tmp->num = curr->num;
+	curr->num = t;
+	if (c == 'a')
+		puts("sa");
+	else
+		puts("sb");
+}
+
+// void	_rotate_(t_stack **st, int size)
+// {
+	
+// }
+
+// void	_push_to_stack_(t_ps *ps, char *rule)
+// {
+	
+// }
 // void    _pop_(t_stack *st, int num)
 // {
 //     printf("pop");
@@ -85,12 +132,14 @@ void	_fill_stack_(t_ps *ps, char **args, int size)
 
 	i = 1;
 	ps->s_a = NULL;
+	_swap_(&ps->s_a, 0, 'a');
 	while (i < size)
 	{
-		_push_front_(&ps->s_a, ft_atoi(args[i]));
-		printf("hid\n");
+		_push_back_(&ps->s_a, ft_atoi(args[i]));
 		i++;
 	}
+	_swap_(&ps->s_a, 4, 'a');
+	// _swap_(&ps->s_a, 4);
 	while(ps->s_a)
 	{
 		// printf("hi");
