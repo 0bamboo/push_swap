@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abdait-m <abdait-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 13:05:09 by abdait-m          #+#    #+#             */
-/*   Updated: 2019/10/23 15:33:17 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/05/18 00:44:07 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 int		ft_isascii(int c)
 {
-	unsigned char s;
-
-	s = (unsigned char)c;
 	if (c >= 0 && c <= 127)
 		return (1);
 	return (0);
