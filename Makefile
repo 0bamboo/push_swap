@@ -6,7 +6,7 @@
 #    By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/15 14:08:46 by abdait-m          #+#    #+#              #
-#    Updated: 2021/05/15 14:31:01 by abdait-m         ###   ########.fr        #
+#    Updated: 2021/05/18 22:57:33 by abdait-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJECT = $(FILES:.c=.o)
 
 FLAGS = -Wextra -Werror -Wall
 
-all: $(NAME)
+all: $(NAME) $(LIBFT_LIB)
 
 $(LIBFT_LIB):
 			@make -C $(LIBFT)

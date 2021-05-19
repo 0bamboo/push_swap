@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/05/18 01:08:14 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/05/19 01:47:36 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <stdio.h>
 # include <unistd.h>
 # include "../libft/libft.h"
+
+#define MAX_INT 2147483647
+#define MIN_INT -2147483648
 
 typedef struct  s_stack
 {
@@ -31,6 +34,7 @@ typedef struct  s_ps
 {
 	t_stack		*s_a;
 	t_stack		*s_b;
+    int         err;
 }				t_ps;
 
 #endif
