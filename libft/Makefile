@@ -6,7 +6,7 @@
 #    By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 15:48:22 by abdait-m          #+#    #+#              #
-#    Updated: 2021/05/15 14:22:35 by abdait-m         ###   ########.fr        #
+#    Updated: 2021/05/19 14:56:03 by abdait-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ FLG = -Wall -Wextra -Werror
 
 all: $(NAME) 
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(FILES)
 		@ar rc $(NAME) $(OBJ)
 		@ranlib $(NAME) 
 

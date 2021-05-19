@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abdait-m <abdait-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 11:40:27 by abdait-m          #+#    #+#             */
-/*   Updated: 2019/11/01 18:31:30 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/05/19 14:56:30 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			return ((void*)--ptr);
 	}
 	return (0);
+	
 }

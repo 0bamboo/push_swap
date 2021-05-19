@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/05/19 01:47:36 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/05/19 15:08:23 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,26 @@ typedef struct  s_ps
 	t_stack		*s_a;
 	t_stack		*s_b;
     int         err;
+    int         size_a;
+    int         size_b;
 }				t_ps;
+
+void    _push_front_(t_stack **st, int num);
+void	_push_back_(t_stack **st, int num);
+void	_swap_(t_stack **st, char c);
+void    _pop_front_(t_stack **st);
+void	_pop_back_(t_stack **st);
+void	_push_to_stack_(t_ps *ps, char rule);
+int	    _checker_(char *args, int index);
+int	    _check_dup_(t_stack **s_a, int size);
+int     _check_args_(char **args, int size);
+long	_atoi_mod_(const char *str);
+void    _empty_stack_(t_stack *st);
+void	_exit_error_(void);
+int		_get_last_element_(t_stack **st);
+int	    _get_size_(t_stack **st);
+void	_reverse_rotate_(t_ps *ps, char rule);
+void	_rotate_(t_ps *ps, char rule);
+void	_fill_stack_(t_ps *ps, char **args, int size);
 
 #endif
