@@ -1,0 +1,15 @@
+the algo that i will use :
+
+- if the size of the stack is bigger or equal 20 {
+    - you need to divide the stack to small chunks..
+    - start looking for numbers of the first chunk
+    - try to shift that number to the top of the stack 
+    - use either ra or rra that's depends on the spot of that number
+    - if the spot of that number is less than the middle of size of stack use ra
+        else use rra.....
+    - when u shift that number to the top u need to push it to
+        B but check first if that number is bigger or smaller than all number in By
+    - when you move all the numbers of the first chunk to B
+        work on the second chunk an so on....
+    
+}
