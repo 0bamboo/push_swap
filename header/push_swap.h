@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/05/19 15:08:23 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/05/31 15:00:56 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct  s_ps
 
 void    _push_front_(t_stack **st, int num);
 void	_push_back_(t_stack **st, int num);
-void	_swap_(t_stack **st, char c);
+void	_swap_(t_stack **st);
 void    _pop_front_(t_stack **st);
 void	_pop_back_(t_stack **st);
 void	_push_to_stack_(t_ps *ps, char rule);
@@ -56,5 +56,16 @@ int	    _get_size_(t_stack **st);
 void	_reverse_rotate_(t_ps *ps, char rule);
 void	_rotate_(t_ps *ps, char rule);
 void	_fill_stack_(t_ps *ps, char **args, int size);
+void    _ra_(t_ps *ps);
+void    _rb_(t_ps *ps);
+void    _rr_(t_ps *ps);
+void    _rra_(t_ps *ps);
+void    _rrb_(t_ps *ps);
+void    _rrr_(t_ps *ps);
+void    _pa_(t_ps *ps);
+void    _pb_(t_ps *ps);
+void    _sa_(t_ps *ps);
+void    _sb_(t_ps *ps);
+void    _ss_(t_ps *ps);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:44:29 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/05/19 15:08:30 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/05/31 14:59:55 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	_get_size_(t_stack **st)
 	return (size);
 }
 
-void	_swap_(t_stack **st, char c)
+void	_swap_(t_stack **st)
 {
 	t_stack *curr;
 	t_stack *tmp;
@@ -54,10 +54,6 @@ void	_swap_(t_stack **st, char c)
 	t = tmp->num;
 	tmp->num = curr->num;
 	curr->num = t;
-	if (c == 'a')
-		puts("sa");
-	else
-		puts("sb");
 }
 
 void	_reverse_rotate_(t_ps *ps, char rule)
