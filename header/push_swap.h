@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/04 01:30:00 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/04 09:21:35 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct  s_ps
     int         *array;
     int         size_a;
     int         size_b;
+    int         left;
+    int         right;
 }				t_ps;
 
 void    _push_front_(t_stack **st, int num);

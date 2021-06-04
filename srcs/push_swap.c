@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:15:37 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/04 01:56:14 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/04 09:38:17 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,47 @@ void	_insertion_sort_(t_ps *ps)
 	}
 }
 
-// void	_quick_sort_(t_ps *ps)
-// {
+void	_swap_nums_(int *a, int *b)
+{
+	int	tmp;
 	
-// }
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+int		_partition_(int *array, int left, int right)
+{
+	int		pivot;
+	int		i;
+	int		j;
+
+	i = left - 1;
+	j = i;
+	pivot = array[right];
+	while (++j <= right - 1)
+	{
+		if (array[j] < pivot)
+		{
+			i++;
+			_swap_nums_(&array[i], &array[j]);
+		}
+	}
+	_swap_nums_(&array[i + 1], &array[right]);
+	return (i + 1);
+}
+
+void	_quick_sort_(int *array, int left, int right)
+{
+	int		pivot;
+	
+	if (left < right)
+	{
+		pivot = _partition_(array, left, right);
+		_quick_sort_(array, left, pivot - 1);
+		_quick_sort_(array, pivot + 1, right);
+	}
+}
 
 void	_fill_stack_(t_ps *ps, char **args, int size)
 {
@@ -66,7 +103,8 @@ void	_fill_stack_(t_ps *ps, char **args, int size)
 	_pb_(ps);
 	_pb_(ps);
 	puts("------------array---------");
-	_insertion_sort_(ps);
+	_quick_sort_(ps->array, 0, ps->size_a - 1);
+	// _insertion_sort_(ps);
 	j = -1;
 	while (++j < ps->size_a)
 		printf("|%d| ", ps->array[j]);
