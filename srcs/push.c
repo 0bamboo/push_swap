@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:43:46 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/05/31 13:19:17 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/18 19:17:13 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void    _pop_front_(t_stack **st)
 {
 	t_stack *pop;
-	t_stack *ncurr;
+	t_stack *curr;
 
 	pop = (*st);
 	if (!pop)
 		return ;
 	if (pop->next)
 	{
-		ncurr = pop->next;
+		curr = pop->next;
 		pop->next = NULL;
-		ncurr->prev = NULL;
-		(*st) = ncurr;
+		curr->prev = NULL;
+		(*st) = curr;
 		free(pop);
 		pop = NULL;
 	}

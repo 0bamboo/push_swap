@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:44:02 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/05/19 14:52:07 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/18 17:26:40 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	_checker_(char *args, int index)
 {
+	//fix error -3+3 maybe fixed but check for other errors and try to recode this shitt code 
 	if (((args[0] != '-' && args[0] != '+') && !ft_isdigit(args[index]))
-			|| ((args[0] == '-' || args[0] == '+') && !ft_isdigit(args[1])))
+			|| ((args[0] == '-' || args[0] == '+') && !ft_isdigit(args[1])) || (index != 0 && !ft_isdigit(args[index])))
 		return (1);
 	return (0);
 }
