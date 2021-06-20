@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/20 00:33:29 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/20 20:23:26 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	_quick_sort_(int *array, int left, int right);
 void	_rotate_(t_ps *ps, char rule);
 void	_insertion_sort_(t_ps *ps);
 void	_fill_stack_(t_ps *ps, char **args, int size);
+void    _start_sorting_stack_(t_ps *ps);
+void    _the_start_(t_ps *ps, int argc, char **argv);
 void    _ra_(t_ps *ps);
 void    _rb_(t_ps *ps);
 void    _rr_(t_ps *ps);
