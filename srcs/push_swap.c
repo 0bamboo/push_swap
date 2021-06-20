@@ -6,87 +6,27 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:15:37 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/13 19:25:19 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/20 00:36:34 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../header/push_swap.h"
 
-void	_insertion_sort_(t_ps *ps)
-{
-	int	i;
-	int	tmp;
-	int	j;
 
-	i = 0;
-	while (++i < ps->size_a)
-	{
-		tmp = ps->array[i];
-		j = i - 1;
-		while (j >= 0 && ps->array[j] > tmp)
-		{
-			ps->array[j + 1] = ps->array[j];
-			j = j - 1;
-		}
-		ps->array[j + 1] = tmp;
-	}
-}
-
-void	_swap_nums_(int *a, int *b)
-{
-	int	tmp;
-	
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-int		_partition_(int *array, int left, int right)
-{
-	int		pivot;
-	int		i;
-	int		j;
-
-	i = left - 1;
-	j = i;
-	pivot = array[right];
-	while (++j <= right - 1)
-	{
-		if (array[j] < pivot)
-		{
-			i++;
-			_swap_nums_(&array[i], &array[j]);
-		}
-	}
-	_swap_nums_(&array[i + 1], &array[right]);
-	return (i + 1);
-}
-
-void	_quick_sort_(int *array, int left, int right)
-{
-	int		pivot;
-	
-	if (left < right)
-	{
-		pivot = _partition_(array, left, right);
-		_quick_sort_(array, left, pivot - 1);
-		_quick_sort_(array, pivot + 1, right);
-	}
-}
 
 void	_fill_stack_(t_ps *ps, char **args, int size)
 {
-	int	i;
+	int		i;
 	long	tmp;
 	int		j;
 
 	i = 1;
+	j = 0;
 	ps->s_a = NULL;
 	ps->s_b = NULL;
-	j = 0;
-	ps->size_a = size - 1;
-	ps->array = malloc(sizeof(int) * ps->size_a);
+	ps->size_a = size;
 	printf("size == |%d|", size);
+	ps->array = malloc(sizeof(int) * ps->size_a);
 	while (i < size)
 	{
 		tmp = _atoi_mod_(args[i]);
@@ -96,96 +36,28 @@ void	_fill_stack_(t_ps *ps, char **args, int size)
 		_push_back_(&ps->s_a, tmp);
 		i++;
 	}
-	if (_check_dup_(&ps->s_a, size - 1))
+	if (_check_dup_(&ps->s_a, size))
 		_exit_error_();
-	_sa_(ps);
-	_pb_(ps);
-	_pb_(ps);
-	_pb_(ps);
-	puts("------------array---------");
-	_quick_sort_(ps->array, 0, ps->size_a - 1);
-	// _insertion_sort_(ps);
-	j = -1;
-	while (++j < ps->size_a)
-		printf("|%d| ", ps->array[j]);
-	puts("");
-	puts("-------------stack a : -----------------");
-	printf("top ");
-	while(ps->s_a)
-	{
-		printf("-> %d ", ps->s_a->num);
-		ps->s_a = ps->s_a->next; 
-	}
-	puts("");
-	puts("--------------stack b : ------------------");
-	printf("top ");
-	while(ps->s_b)
-	{
-		printf("-> %d ", ps->s_b->num);
-		ps->s_b = ps->s_b->next;
-	}
-	puts("");
+	_sorting_the_array_(ps)
 }
 
-void	_ra_(t_ps *ps)
+void	_sorting_the_array_(t_ps *ps)
 {
-	_rotate_(ps, 'a');
+	if (ps->size_a <= 11)
+		_insertion_sort_(ps);
+	else if (ps->size_a > 11)
+		_quick_sort_(ps->array, 0, ps->size_a - 1);
 }
 
-void	_rb_(t_ps *ps)
+void	_sart_sorting_stack_(t_ps *ps)
 {
-	_rotate_(ps, 'b');
+	return ;
 }
 
-void	_rr_(t_ps *ps)
+void	_the_start_(t_ps *ps)
 {
-	_ra_(ps);
-	_rb_(ps);
-}
-
-void	_rra_(t_ps *ps)
-{
-	_reverse_rotate_(ps, 'a');
-}
-
-void	_rrb_(t_ps *ps)
-{
-	_reverse_rotate_(ps, 'b');
-}
-
-void	_rrr_(t_ps *ps)
-{
-	_rra_(ps);
-	_rrb_(ps);
-}
-
-void	_pa_(t_ps *ps)
-{
-	_push_to_stack_(ps, 'a');
-}
-
-void	_pb_(t_ps *ps)
-{
-	_push_to_stack_(ps, 'b');
-}
-
-
-
-void	_sa_(t_ps *ps)
-{
-	_swap_(&ps->s_a);
-}
-
-
-void	_sb_(t_ps *ps)
-{
-	_swap_(&ps->s_b);
-}
-
-void	_ss_(t_ps *ps)
-{
-	_sa_(ps);
-	_sb_(ps);
+	_fill_stack_(ps, argv, argc - 1);
+	_start_sorting_stack_(ps);
 }
 
 int main(int argc, char **argv)
@@ -196,7 +68,7 @@ int main(int argc, char **argv)
 	ps->err = 0;
 	if (_check_args_(argv, argc))
 		_exit_error_();
-	_fill_stack_(ps, argv, argc);
+	_the_start_(ps);
     free(ps);
     return (0);
 }
