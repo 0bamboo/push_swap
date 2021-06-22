@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/20 20:23:26 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/22 11:40:21 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@
 typedef struct  s_stack
 {
     int             num;
-    int             top;
-    struct s_stack  *next;   
+    struct s_stack  *next;  
     struct s_stack  *prev;   
 }               t_stack;
 
