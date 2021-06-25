@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:15:37 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/22 12:08:24 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/25 11:25:43 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ void	_start_sorting_stack_(t_ps *ps)
 	if (ps->size_a == 3)
 		_sort_three_nums(ps);
 	else if (ps->size_a > 3 && ps->size_a <= 10)
-		
-		
+	
 	return ;
 }
 
@@ -105,16 +104,79 @@ void	_the_start_(t_ps *ps, int argc, char **argv)
 	_start_sorting_stack_(ps);
 }
 
+int		_get_size_of_tab(char **ch)
+{
+	int size;
+
+	size = -1;
+	if (ch)
+		while (ch[++size]);
+	return (size);
+}
+
+char	**_realloc_of_char_(char **tab, int size, int index)
+{
+	int i;
+	int j;
+	char **new;
+
+	i = -1;
+	j = 0;
+	new = (char **)malloc(sizeof(char *) * size);
+	if (tab)
+	{
+		if(index > 1)
+		{
+			while(tab[++i])
+			{
+				printf("+%s+\n", tab[i]);
+				new[j++] = ft_strdup(tab[i]);
+			}
+		}
+	}
+	i = -1;
+	if (index > 1)
+		while (new[++i])
+			printf("new = |%s|\n", new[i]);
+	return (new);
+}
+
 int main(int argc, char **argv)
 {
     t_ps *ps;
 	int i = -1;
+	int size;
+	char **ch;
+	char **tmp;
 
     ps = malloc(sizeof(t_ps));
 	ps->err = 0;
-	// while (argv[++i])
-	// 	printf("|%s| ", argv[i]);
-	// puts("");
+	ch = ft_split(argv[1], ' ');
+	while (argv[++i])
+		printf("---|%s| ", argv[i]);
+	puts("");
+	i = 0;
+	ch = (char **)malloc(sizeof(char *) * argc);
+	int j;
+	int z = 1;
+	while(z < argc)
+	{
+		j = 0;
+		tmp = ft_split(argv[z], ' ');
+		size = _get_size_of_tab(tmp);
+		if (size > 1)
+			ch = _realloc_of_char_(ch, argc + size - 1, z);
+		while (tmp[j])
+			ch[i++] = ft_strdup(tmp[j++]);
+		z++;
+	}
+	printf("indx = |%d|\n", i);
+	ch[i] = NULL;
+	printf("index : |%d| |%d|\n", i, z);
+	i = -1;
+	while (ch[++i])
+		printf("> |%s|\n", ch[i]);
+	puts("");
 	if (_check_args_(argv, argc))
 		_exit_error_();
 	_the_start_(ps, argc, argv);
