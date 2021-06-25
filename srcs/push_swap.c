@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:15:37 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/25 12:21:39 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/25 21:48:11 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int		_get_size_of_tab(char **ch)
 	return (size);
 }
 
-char	**_realloc_of_char_(char **tab, int size, int index)
+char	**_realloc_of_char_(char **tab, int size, int index, int ret)
 {
 	int i;
 	int j;
@@ -126,9 +126,9 @@ char	**_realloc_of_char_(char **tab, int size, int index)
 	new = (char **)malloc(sizeof(char *) * size);
 	if (tab)
 	{
-		if(index > 1)
+		if(index > 0)
 		{
-			while(tab[++i])
+			while(++i < ret)
 			{
 				printf("+%s+\n", tab[i]);
 				new[j++] = ft_strdup(tab[i]);
@@ -136,48 +136,61 @@ char	**_realloc_of_char_(char **tab, int size, int index)
 		}
 	}
 	i = -1;
-	if (index > 1)
+	if (index > 0)
 		while (new[++i])
 			printf("new = |%s|\n", new[i]);
 	return (new);
+}
+
+void	_get_args_(char **args, int argc)
+{
+	int i;
+	int	j;
+	int indx;
+	char **tmp;
+	char **tab;
+	int size;
+	int size1;
+	int ret;
+
+	i = 1;
+	ret = 0;
+	size = argc;
+	tab = (char **)malloc(sizeof(char *) * size);
+	indx = 0;
+	while (i < argc)
+	{
+		j = 0;
+		tmp = ft_split(args[i], ' ');
+		size1 = _get_size_of_tab(tmp);
+		if (size1 > 1)
+		{
+			size += size1 - 1;
+			tab = _realloc_of_char_(tab, size, indx, ret);
+		}
+		while (tmp[j])
+			tab[indx++] = tmp[j++];
+		ret += j;
+		++i;
+	}
+	printf("size = |%d|\n", size);
+	tab[indx] = NULL;
+	i = 0;
+	puts("tab :");
+	while (tab[i])
+		printf("|%s| ", tab[i++]);
+	puts("");
 }
 
 int main(int argc, char **argv)
 {
     t_ps *ps;
 	int i = -1;
-	int size;
-	char **ch;
-	char **tmp;
 
     ps = malloc(sizeof(t_ps));
 	ps->err = 0;
-	ch = ft_split(argv[1], ' ');
-	while (argv[++i])
-		printf("---|%s| ", argv[i]);
-	puts("");
-	i = 0;
-	ch = (char **)malloc(sizeof(char *) * argc);
-	int j;
-	int z = 1;
-	while(z < argc)
-	{
-		j = 0;
-		tmp = ft_split(argv[z], ' ');
-		size = _get_size_of_tab(tmp);
-		if (size > 1)
-			ch = _realloc_of_char_(ch, argc + size - 1, z);
-		while (tmp[j])
-			ch[i++] = ft_strdup(tmp[j++]);
-		z++;
-	}
-	printf("indx = |%d|\n", i);
-	ch[i] = NULL;
-	printf("index : |%d| |%d|\n", i, z);
-	i = -1;
-	while (ch[++i])
-		printf("> |%s|\n", ch[i]);
-	puts("");
+	printf("argc = |%d|\n", argc);
+	_get_args_(argv, argc);
 	if (_check_args_(argv, argc))
 		_exit_error_();
 	_the_start_(ps, argc, argv);
