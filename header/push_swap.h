@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/22 11:40:21 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/26 17:33:03 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,14 @@ typedef struct  s_ps
 {
 	t_stack		*s_a;
 	t_stack		*s_b;
-    int         err;
+    char        **argv;
+    char        **tmp;
+    int         fsize;
     int         *array;
+    int         err;
+    int         i;
+    int         j;
+    int         idx;
     int         size_a;
     int         size_b;
     int         left;
@@ -43,13 +49,14 @@ typedef struct  s_ps
 
 void    _push_front_(t_stack **st, int num);
 void	_push_back_(t_stack **st, int num);
+int		_already_sorted(t_ps *ps);
 void	_swap_(t_stack **st);
 void    _pop_front_(t_stack **st);
 void	_pop_back_(t_stack **st);
 void	_push_to_stack_(t_ps *ps, char rule);
 int	    _checker_(char *args, int index);
 int	    _check_dup_(t_stack **s_a);
-int     _check_args_(char **args, int size);
+int     _check_args_(char *args);
 long	_atoi_mod_(const char *str);
 void    _empty_stack_(t_stack *st);
 void	_exit_error_(void);
@@ -60,9 +67,11 @@ void	_sorting_the_array_(t_ps *ps);
 void	_quick_sort_(int *array, int left, int right);
 void	_rotate_(t_ps *ps, char rule);
 void	_insertion_sort_(t_ps *ps);
-void	_fill_stack_(t_ps *ps, char **args, int size);
-void    _start_sorting_stack_(t_ps *ps);
-void    _the_start_(t_ps *ps, int argc, char **argv);
+void	_fill_stack_(t_ps *ps);
+void    _sorting_the_stack_(t_ps *ps);
+int		_get_args_size(t_ps *ps, char **args, int argc);
+int     _get_args_(t_ps *ps, char **args, int argc);
+void    _the_start_(t_ps *ps);
 void    _ra_(t_ps *ps);
 void    _rb_(t_ps *ps);
 void    _rr_(t_ps *ps);

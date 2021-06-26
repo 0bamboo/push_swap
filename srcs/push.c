@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:43:46 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/18 19:17:13 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/26 16:27:47 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,12 @@ void	_push_to_stack_(t_ps *ps, char rule)
 
 	if (ps->s_b && rule == 'a')
 	{
-		puts("pa");
 		tmp = ps->s_b->num;
 		_pop_front_(&ps->s_b);
 		_push_front_(&ps->s_a, tmp);
 	}
 	else if (ps->s_a && rule == 'b')
 	{
-		puts("pb");
 		tmp = ps->s_a->num;
 		_pop_front_(&ps->s_a);
 		_push_front_(&ps->s_b, tmp);

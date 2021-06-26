@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:44:02 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/20 00:18:38 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/26 12:17:16 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,15 @@ int	_check_dup_(t_stack **s_a)
 	return (0);
 }
 
-int   _check_args_(char **args, int size)
+int   _check_args_(char *args)
 {
-	int    i;
 	int    j;
 
-	i = 1;
-	if (size < 2)
-		return (1);
-	while (i < size)
+	j = -1;
+	while (args[++j])
 	{
-		j = -1;
-		while (args[i][++j])
-		{
-			if (_checker_(args[i], j))
-				return (1);
-		}
-		i++;
+		if (_checker_(args, j))
+			return (1);
 	}
 	return (0);
 }
