@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:15:37 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/27 16:35:22 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/27 19:02:38 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,28 @@ int		_get_smallest_num(t_ps *ps)
 	return (small);
 }
 
+int		_get_largest_num(t_ps *ps)
+{
+	t_stack *curr;
+	int		large;
+	int		i;
+
+	curr = ps->s_b;
+	large = MIN_INT;
+	i = 0;
+	while (curr)
+	{
+		if (curr->num > large)
+		{
+			ps->idx = i;
+			large = curr->num;
+		}
+		curr = curr->next;
+		i++;
+	}
+	return (large);
+}
+
 int		_get_first_element(t_stack **st)
 {
 	return ((*st)->num);
@@ -193,6 +215,68 @@ void	_look_for_num(t_ps *ps, int pivot)
 	}
 }
 
+void	_last_step_(t_ps *ps)
+{
+	int		num;
+	int		top;
+	int		middle;
+
+	middle = _get_size_(&ps->s_b) / 2;
+	puts("---------");
+	while (1)
+	{
+		num = _get_largest_num(ps);
+		while (1)
+		{
+			top = _get_first_element(&ps->s_b);
+			if (num == top)
+			{
+				_pa_(ps);
+				break;
+			}
+			else if (ps->idx <= middle)
+				_rb_(ps);
+			else if (ps->idx > middle)
+				_rrb_(ps);
+		}
+		if (_get_size_(&ps->s_b) == 0)
+			break;
+	}
+}
+
+void	_sort_last_chunk_(t_ps *ps)
+{
+	int		num;
+	int		top;
+	int		middle;
+
+	middle = _get_size_(&ps->s_a) / 2;
+	puts("---------");
+	while (1)
+	{
+		num = _get_smallest_num(ps);
+		while (1)
+		{
+			top = _get_first_element(&ps->s_a);
+			if (num == top)
+			{
+				_pb_(ps);
+				break;
+			}
+			else if (ps->idx <= middle)
+				_ra_(ps);
+			else if (ps->idx > middle)
+				_rra_(ps);
+		}
+		if (_get_size_(&ps->s_a) == 3)
+			break;
+	}
+	_sort_three_nums(ps);
+	// _last_step_(ps);
+	while (_get_size_(&ps->s_b))
+		_pa_(ps);
+}
+
 void	_sort_less_1h_(t_ps *ps)
 {
 	int i;
@@ -241,6 +325,7 @@ void	_sort_less_1h_(t_ps *ps)
 		end += size_ch;
 		i++;
 	}
+	_sort_last_chunk_(ps);
 }
 
 void	_sorting_the_stack_(t_ps *ps)
