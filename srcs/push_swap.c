@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:15:37 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/26 17:48:03 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/27 16:35:22 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,92 @@ void	_sort_small_nums(t_ps *ps)
 	puts("---------");
 }
 
+int 	_is_the_smallest_(t_stack **st, int small)
+{
+	t_stack *curr;
+
+	curr = (*st);
+	while (curr)
+	{
+		if (curr->num < small)
+			return 0;
+		curr = curr->next;
+	}
+	return 1;
+}
+
+
+
+void	_look_for_num(t_ps *ps, int pivot)
+{
+	t_stack *curr;
+	int		i;
+
+	curr = ps->s_a;
+	i = 0;
+	while (curr)
+	{
+		if (curr->num < pivot && _is_the_smallest_(&ps->s_a, curr->num))
+		{
+			ps->idx = i;
+			ps->nbr = curr->num;
+			break;
+		}
+		i++;
+		curr = curr->next;
+	}
+}
+
+void	_sort_less_1h_(t_ps *ps)
+{
+	int i;
+	int j;
+	int z;
+	int pivot;
+	int top;
+	int end;
+	int middle;
+	int	size_ch;
+
+	size_ch = ps->size_a / 4;
+	end = size_ch;
+	middle = ps->size_a / 2;
+	i = -1;
+	z = 0;
+	_sorting_the_array_(ps);
+	printf("array |%d|\n", ps->size_a);
+	while (++i < ps->size_a)
+		printf("|%d", ps->array[i]);
+	puts("");
+	i = 0;
+	while (i < 3)
+	{
+		j = 0;
+		pivot = ps->array[end];
+		printf("====sizee ==|%d|  ======pivot==|%d|\n", size_ch, pivot);
+		while (j < size_ch)
+		{
+			_look_for_num(ps, pivot);
+			while (1)
+			{
+				top = _get_first_element(&ps->s_a);
+				if (top == ps->nbr)
+				{
+					_pb_(ps);
+					break;
+				}
+				else if (ps->idx <= middle)
+					_ra_(ps);
+				else if (ps->idx > middle)
+					_rra_(ps);
+			}
+			j++;
+		}
+		end += size_ch;
+		i++;
+	}
+}
+
 void	_sorting_the_stack_(t_ps *ps)
 {
 	if (ps->size_a == 2 && ps->s_a->num > ps->s_a->next->num)
@@ -165,7 +251,8 @@ void	_sorting_the_stack_(t_ps *ps)
 		_sort_three_nums(ps);
 	else if (ps->size_a > 3 && ps->size_a <= 10)
 		_sort_small_nums(ps);
-	else if (ps->size_a > 10)
+	else if (ps->size_a > 10 && ps->size_a <= 100)
+		_sort_less_1h_(ps);
 		return ;
 }
 
