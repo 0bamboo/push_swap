@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/27 13:42:46 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/27 23:18:33 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ typedef struct  s_ps
     char        **tmp;
     int         fsize;
     int         *array;
+    int         middle;
+    int         top;
+    int         chunk_s;
     int         nbr;
     int         err;
     int         i;

@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:15:37 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/27 19:02:38 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/27 23:20:31 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ void	_fill_stack_(t_ps *ps)
 {
 	int		i;
 	long	tmp;
-	int		j;
 
 	i = 0;
-	j = 0;
 	ps->s_a = NULL;
 	ps->s_b = NULL;
 	ps->size_a = ps->fsize - 1;
@@ -281,7 +279,6 @@ void	_sort_less_1h_(t_ps *ps)
 {
 	int i;
 	int j;
-	int z;
 	int pivot;
 	int top;
 	int end;
@@ -292,7 +289,6 @@ void	_sort_less_1h_(t_ps *ps)
 	end = size_ch;
 	middle = ps->size_a / 2;
 	i = -1;
-	z = 0;
 	_sorting_the_array_(ps);
 	printf("array |%d|\n", ps->size_a);
 	while (++i < ps->size_a)
@@ -328,6 +324,11 @@ void	_sort_less_1h_(t_ps *ps)
 	_sort_last_chunk_(ps);
 }
 
+void	_sort_the_rest_(t_ps *ps)
+{
+	
+}
+
 void	_sorting_the_stack_(t_ps *ps)
 {
 	if (ps->size_a == 2 && ps->s_a->num > ps->s_a->next->num)
@@ -338,7 +339,8 @@ void	_sorting_the_stack_(t_ps *ps)
 		_sort_small_nums(ps);
 	else if (ps->size_a > 10 && ps->size_a <= 100)
 		_sort_less_1h_(ps);
-		return ;
+	else
+		_sort_the_rest_(ps);
 }
 
 
@@ -371,7 +373,7 @@ int		_get_args_size(t_ps *ps, char **args, int argc)
 	{
 		ps->j = -1;
 		ps->tmp = _split_all(args[ps->i]);
-		if (ps->tmp[0] == '\0')
+		if (ps->tmp[0][0] == '\0')
 			return (1);
 		while (ps->tmp[++ps->j])
 		{
