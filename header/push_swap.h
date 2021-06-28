@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/28 11:33:28 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/28 12:10:55 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ int	    _check_dup_(t_stack **s_a);
 int     _check_args_(char *args);
 long	_atoi_mod_(const char *str);
 void    _empty_stack_(t_stack *st);
-void	_exit_error_(void);
+void	_exit_error_(t_ps *ps);
+void	_clear_all_(t_ps *ps);
 int		_get_last_element_(t_stack **st);
 int	    _get_size_(t_stack **st);
 void	_reverse_rotate_(t_ps *ps, char rule);

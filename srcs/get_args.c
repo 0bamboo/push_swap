@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 10:12:35 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/28 10:16:11 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/28 16:02:47 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,24 @@ int		_get_args_size(t_ps *ps, char **args, int argc)
 		return (1);
 	ps->i = 1;
 	size = 0;
+	ps->argv = NULL;
+	ps->s_a = NULL;
 	while (ps->i < argc)
 	{
 		ps->j = -1;
 		ps->tmp = _split_all(args[ps->i]);
 		if (!ps->tmp[0])
 			return (1);
+		puts("hi");
 		while (ps->tmp[++ps->j])
 		{
 			if (_check_args_(ps->tmp[ps->j]))
+			{
+				free(ps->tmp[ps->j]);
+				free(ps->tmp);
+				puts("hello");
 				return (1);
+			}
 			free(ps->tmp[ps->j]);
 		}
 		free(ps->tmp);
@@ -50,6 +58,7 @@ int	_get_args_(t_ps *ps, char **args, int argc)
 	{
 		ps->j = 0;
 		ps->tmp = _split_all(args[ps->i]);
+		puts("hello");
 		while (ps->tmp[ps->j])
 		{
 			ps->argv[ps->idx++] = ft_strdup(ps->tmp[ps->j++]);

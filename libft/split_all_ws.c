@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 14:25:20 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/26 14:43:43 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/28 16:02:04 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int     _is_white_space(char c)
 {
-    if (c == ' ' || c == '\n' || c == '\t' || c == '\v')
+    if (c == ' ' || c == '\n' || c == '\t' || c == '\v' || c == '\f' || c == '\r')
         return (1);
     return (0);
 }
@@ -70,6 +70,7 @@ char				**_split_all(char const *s)
 		p[i++][j] = '\0';
 	}
 	p[i] = NULL;
+	free((char *)s);
 	return (p);
 }
 
