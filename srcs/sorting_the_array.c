@@ -73,3 +73,11 @@ void	_quick_sort_(int *array, int left, int right)
 		_quick_sort_(array, pivot + 1, right);
 	}
 }
+
+void	_sorting_the_array_(t_ps *ps)
+{
+	if (ps->size_a <= 11)
+		_insertion_sort_(ps);
+	else if (ps->size_a > 11)
+		_quick_sort_(ps->array, 0, ps->size_a - 1);
+}

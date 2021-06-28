@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:44:02 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/26 12:17:16 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/28 10:20:52 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	_checker_(char *args, int index)
 	//fix error -3+3 maybe fixed but check for other errors and try to recode this shitt code 
 	if (((args[0] != '-' && args[0] != '+') && !ft_isdigit(args[index]))
 			|| (index != 0 && !ft_isdigit(args[index])))
-		return (1);
-	return (0);
+		return (FAILURE);
+	return (SUCCESS);
 }
 
 int	_check_dup_(t_stack **s_a)
@@ -39,14 +39,14 @@ int	_check_dup_(t_stack **s_a)
 			while (check)
 			{
 				if (tmp == check->num)
-					return (1);
+					return (FAILURE);
 				check = check->next;
 			}
 			curr = curr->next;
 			i++;
 		}
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 int   _check_args_(char *args)
@@ -57,7 +57,7 @@ int   _check_args_(char *args)
 	while (args[++j])
 	{
 		if (_checker_(args, j))
-			return (1);
+			return (FAILURE);
 	}
-	return (0);
+	return (SUCCESS);
 }

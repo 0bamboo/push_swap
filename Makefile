@@ -6,7 +6,7 @@
 #    By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/15 14:08:46 by abdait-m          #+#    #+#              #
-#    Updated: 2021/06/20 19:57:31 by abdait-m         ###   ########.fr        #
+#    Updated: 2021/06/28 11:31:30 by abdait-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ LIBFT = ./libft
 LIBFT_LIB = $(LIBFT)/libft.a
 
 FILES = ./srcs/push_swap.c ./srcs/error_checker.c ./srcs/push.c ./srcs/instructions_1.c \
+		./srcs/get_args.c ./srcs/sorting_the_stack.c ./srcs/sorting_tools.c ./srcs/sorting_tools_2.c\
 		./srcs/rotate.c ./srcs/tools.c ./srcs/instructions_2.c ./srcs/sorting_the_array.c \
 
 HEADER = ./header/push_swap.h

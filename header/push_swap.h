@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/27 23:18:33 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/28 11:33:28 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 #define MAX_INT 2147483647
 #define MIN_INT -2147483648
+#define SUCCESS 0
+#define FAILURE 1
 
 typedef struct  s_stack
 {
@@ -38,6 +40,7 @@ typedef struct  s_ps
     int         fsize;
     int         *array;
     int         middle;
+    int         pivot;
     int         top;
     int         chunk_s;
     int         nbr;
@@ -52,6 +55,21 @@ typedef struct  s_ps
 }				t_ps;
 
 void    _push_front_(t_stack **st, int num);
+int		_already_sorted(t_ps *ps);
+void	_look_for_num(t_ps *ps);
+void	_last_step_(t_ps *ps);
+int		_get_size_of_tab(char **ch);
+int 	_is_the_smallest_(t_stack **st, int small);
+void	_which_instructions_(t_ps *ps, int num);
+void	_sort_small_sizes_(t_ps *ps);
+void	_sort_last_chunk_(t_ps *ps);
+void	_sort_large_sizes_(t_ps *ps, int nbr_ch);
+void	_sorting_the_stack_(t_ps *ps);
+void	_sorting_the_array_(t_ps *ps);
+int		_get_largest_num(t_ps *ps);
+void	_sort_three_nums(t_ps *ps);
+int		_get_first_element(t_stack **st);
+int		_get_smallest_num(t_ps *ps);
 void	_push_back_(t_stack **st, int num);
 int		_already_sorted(t_ps *ps);
 void	_swap_(t_stack **st);
@@ -72,7 +90,9 @@ void	_quick_sort_(int *array, int left, int right);
 void	_rotate_(t_ps *ps, char rule);
 void	_insertion_sort_(t_ps *ps);
 void	_fill_stack_(t_ps *ps);
+int		_get_args_size(t_ps *ps, char **args, int argc);
 void    _sorting_the_stack_(t_ps *ps);
+int     _get_args_(t_ps *ps, char **args, int argc);
 int		_get_args_size(t_ps *ps, char **args, int argc);
 int     _get_args_(t_ps *ps, char **args, int argc);
 void    _the_start_(t_ps *ps);

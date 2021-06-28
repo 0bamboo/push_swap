@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:15:37 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/27 23:20:31 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/28 11:32:47 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	_fill_stack_(t_ps *ps)
 	i = 0;
 	ps->s_a = NULL;
 	ps->s_b = NULL;
-	ps->size_a = ps->fsize - 1;
+	if((ps->size_a = ps->fsize - 1) == 1)
+		exit(0);
 	ps->array = malloc(sizeof(int) * ps->size_a);
 	while (i < ps->size_a)
 	{
@@ -35,315 +36,7 @@ void	_fill_stack_(t_ps *ps)
 	}
 	if (_check_dup_(&ps->s_a))
 		_exit_error_();
-	printf("sorted or not : |%d|\n", _already_sorted(ps));
-	// _sorting_the_array_(ps);
 }
-
-void	_sorting_the_array_(t_ps *ps)
-{
-	if (ps->size_a <= 11)
-		_insertion_sort_(ps);
-	else if (ps->size_a > 11)
-		_quick_sort_(ps->array, 0, ps->size_a - 1);
-}
-
-void	_sort_three_nums(t_ps *ps)
-{
-	t_stack *first;
-	t_stack *second;
-	t_stack *third;
-	
-	first = ps->s_a;
-	second = first->next;
-	third = second->next;
-	if (first->num > second->num && first->num < third->num)
-		_sa_(ps);
-	else if (first->num > second->num && second->num > third->num)
-	{
-		_sa_(ps);
-		_rra_(ps);
-	}
-	else if (third->num > second->num && first->num > third->num)
-		_ra_(ps);
-	else if (first->num < second->num && first->num > third->num)
-		_rra_(ps);
-	else if (third->num < second->num && third->num > first->num)
-	{
-		_sa_(ps);
-		_ra_(ps);
-	}
-}
-
-int		_already_sorted(t_ps *ps)
-{
-	int		i;
-	int		j;
-	int		check;
-	
-	i = -1;
-	while (++i < ps->size_a)
-	{
-		check = ps->array[i];
-		j = i + 1;
-		while (j < ps->size_a)
-		{
-			if (check > ps->array[j])
-				return (0);
-			j++;
-		}
-	}
-	return (1);
-}
-
-int		_get_smallest_num(t_ps *ps)
-{
-	t_stack *curr;
-	int		small;
-	int		i;
-
-	curr = ps->s_a;
-	small = MAX_INT;
-	i = 0;
-	while (curr)
-	{
-		if (curr->num < small)
-		{
-			ps->idx = i;
-			small = curr->num;
-		}
-		curr = curr->next;
-		i++;
-	}
-	return (small);
-}
-
-int		_get_largest_num(t_ps *ps)
-{
-	t_stack *curr;
-	int		large;
-	int		i;
-
-	curr = ps->s_b;
-	large = MIN_INT;
-	i = 0;
-	while (curr)
-	{
-		if (curr->num > large)
-		{
-			ps->idx = i;
-			large = curr->num;
-		}
-		curr = curr->next;
-		i++;
-	}
-	return (large);
-}
-
-int		_get_first_element(t_stack **st)
-{
-	return ((*st)->num);
-}
-
-void	_sort_small_nums(t_ps *ps)
-{
-	int		num;
-	int		top;
-	int		middle;
-
-	middle = ps->size_a / 2;
-	puts("---------");
-	while (1)
-	{
-		num = _get_smallest_num(ps);
-		while (1)
-		{
-			top = _get_first_element(&ps->s_a);
-			if (num == top)
-			{
-				_pb_(ps);
-				break;
-			}
-			else if (ps->idx <= middle)
-				_ra_(ps);
-			else if (ps->idx > middle)
-				_rra_(ps);
-		}
-		if (_get_size_(&ps->s_a) == 3)
-			break;
-	}
-	_sort_three_nums(ps);
-	while (_get_size_(&ps->s_b))
-		_pa_(ps);
-	puts("---------");
-}
-
-int 	_is_the_smallest_(t_stack **st, int small)
-{
-	t_stack *curr;
-
-	curr = (*st);
-	while (curr)
-	{
-		if (curr->num < small)
-			return 0;
-		curr = curr->next;
-	}
-	return 1;
-}
-
-
-
-void	_look_for_num(t_ps *ps, int pivot)
-{
-	t_stack *curr;
-	int		i;
-
-	curr = ps->s_a;
-	i = 0;
-	while (curr)
-	{
-		if (curr->num < pivot && _is_the_smallest_(&ps->s_a, curr->num))
-		{
-			ps->idx = i;
-			ps->nbr = curr->num;
-			break;
-		}
-		i++;
-		curr = curr->next;
-	}
-}
-
-void	_last_step_(t_ps *ps)
-{
-	int		num;
-	int		top;
-	int		middle;
-
-	middle = _get_size_(&ps->s_b) / 2;
-	puts("---------");
-	while (1)
-	{
-		num = _get_largest_num(ps);
-		while (1)
-		{
-			top = _get_first_element(&ps->s_b);
-			if (num == top)
-			{
-				_pa_(ps);
-				break;
-			}
-			else if (ps->idx <= middle)
-				_rb_(ps);
-			else if (ps->idx > middle)
-				_rrb_(ps);
-		}
-		if (_get_size_(&ps->s_b) == 0)
-			break;
-	}
-}
-
-void	_sort_last_chunk_(t_ps *ps)
-{
-	int		num;
-	int		top;
-	int		middle;
-
-	middle = _get_size_(&ps->s_a) / 2;
-	puts("---------");
-	while (1)
-	{
-		num = _get_smallest_num(ps);
-		while (1)
-		{
-			top = _get_first_element(&ps->s_a);
-			if (num == top)
-			{
-				_pb_(ps);
-				break;
-			}
-			else if (ps->idx <= middle)
-				_ra_(ps);
-			else if (ps->idx > middle)
-				_rra_(ps);
-		}
-		if (_get_size_(&ps->s_a) == 3)
-			break;
-	}
-	_sort_three_nums(ps);
-	// _last_step_(ps);
-	while (_get_size_(&ps->s_b))
-		_pa_(ps);
-}
-
-void	_sort_less_1h_(t_ps *ps)
-{
-	int i;
-	int j;
-	int pivot;
-	int top;
-	int end;
-	int middle;
-	int	size_ch;
-
-	size_ch = ps->size_a / 4;
-	end = size_ch;
-	middle = ps->size_a / 2;
-	i = -1;
-	_sorting_the_array_(ps);
-	printf("array |%d|\n", ps->size_a);
-	while (++i < ps->size_a)
-		printf("|%d", ps->array[i]);
-	puts("");
-	i = 0;
-	while (i < 3)
-	{
-		j = 0;
-		pivot = ps->array[end];
-		printf("====sizee ==|%d|  ======pivot==|%d|\n", size_ch, pivot);
-		while (j < size_ch)
-		{
-			_look_for_num(ps, pivot);
-			while (1)
-			{
-				top = _get_first_element(&ps->s_a);
-				if (top == ps->nbr)
-				{
-					_pb_(ps);
-					break;
-				}
-				else if (ps->idx <= middle)
-					_ra_(ps);
-				else if (ps->idx > middle)
-					_rra_(ps);
-			}
-			j++;
-		}
-		end += size_ch;
-		i++;
-	}
-	_sort_last_chunk_(ps);
-}
-
-void	_sort_the_rest_(t_ps *ps)
-{
-	
-}
-
-void	_sorting_the_stack_(t_ps *ps)
-{
-	if (ps->size_a == 2 && ps->s_a->num > ps->s_a->next->num)
-		_sa_(ps);
-	if (ps->size_a == 3)
-		_sort_three_nums(ps);
-	else if (ps->size_a > 3 && ps->size_a <= 10)
-		_sort_small_nums(ps);
-	else if (ps->size_a > 10 && ps->size_a <= 100)
-		_sort_less_1h_(ps);
-	else
-		_sort_the_rest_(ps);
-}
-
-
 
 void	_the_start_(t_ps *ps)
 {
@@ -351,96 +44,35 @@ void	_the_start_(t_ps *ps)
 	_sorting_the_stack_(ps);
 }
 
-int		_get_size_of_tab(char **ch)
-{
-	int size;
-
-	size = -1;
-	if (ch)
-		while (ch[++size]);
-	return (size);
-}
-
-int		_get_args_size(t_ps *ps, char **args, int argc)
-{
-	int size;
-
-	if (argc < 2)
-		return (1);
-	ps->i = 1;
-	size = 0;
-	while (ps->i < argc)
-	{
-		ps->j = -1;
-		ps->tmp = _split_all(args[ps->i]);
-		if (ps->tmp[0][0] == '\0')
-			return (1);
-		while (ps->tmp[++ps->j])
-		{
-			if (_check_args_(ps->tmp[ps->j]))
-				return (1);
-			free(ps->tmp[ps->j]);
-		}
-		free(ps->tmp);
-		size += ps->j;
-		++ps->i;
-	}
-	ps->fsize = size + 1;
-	return (0);
-}
-
-int	_get_args_(t_ps *ps, char **args, int argc)
-{
-	ps->i = 1;
-	ps->idx = 0;
-	if (!(ps->argv = (char **)malloc(sizeof(char *) * ps->fsize)))
-		return (1);
-	while (ps->i < argc)
-	{
-		ps->j = 0;
-		ps->tmp = _split_all(args[ps->i]);
-		while (ps->tmp[ps->j])
-		{
-			ps->argv[ps->idx++] = ft_strdup(ps->tmp[ps->j++]);
-			free(ps->tmp[ps->j]);
-		}
-		free(ps->tmp);
-		++ps->i;
-	}
-	ps->argv[ps->idx] = NULL;
-	return (0);
-}		
-
-
 
 
 int main(int argc, char **argv)
 {
     t_ps *ps;
-	int i = -1;
+	// int i = -1;
 
     ps = malloc(sizeof(t_ps));
 	ps->err = 0;
 	if (_get_args_size(ps, argv, argc) || _get_args_(ps, argv, argc))
 		_exit_error_();
 	_the_start_(ps);
-	puts("array :");
-	i = -1;
-	while (++i < ps->size_a)
-		printf("| %d ", ps->array[i]);
-	puts("");
-	puts("Stack a");
-	while (ps->s_a)
-	{
-		printf("- %d ", ps->s_a->num);
-		ps->s_a = ps->s_a->next;
-	}
-	puts("\nb :");
-	while (ps->s_b)
-	{
-		printf("- %d ", ps->s_b->num);
-		ps->s_b = ps->s_b->next;
-	}
+	// puts("array :");
+	// i = -1;
+	// while (++i < ps->size_a)
+	// 	printf("| %d ", ps->array[i]);
+	// puts("");
+	// puts("Stack a");
+	// while (ps->s_a)
+	// {
+	// 	printf("- %d ", ps->s_a->num);
+	// 	ps->s_a = ps->s_a->next;
+	// }
+	// puts("\nb :");
+	// while (ps->s_b)
+	// {
+	// 	printf("- %d ", ps->s_b->num);
+	// 	ps->s_b = ps->s_b->next;
+	// }
     free(ps);
     return (0);						
 }
