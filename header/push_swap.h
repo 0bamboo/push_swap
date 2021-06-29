@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/29 09:49:54 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/29 13:51:12 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,11 @@ typedef struct  s_ps
 
 void    _push_front_(t_stack **st, int num);
 int		_already_sorted(t_ps *ps);
+void	_init_vars_(t_ps *ps);
 void	_look_for_num(t_ps *ps);
 void	_last_step_(t_ps *ps);
+void	_the_start_(t_ps *ps);
+void	_fill_stack_(t_ps *ps);
 int		_get_size_of_tab(char **ch);
 int 	_is_the_smallest_(t_stack **st, int small);
 void	_which_instructions_(t_ps *ps, int num);
