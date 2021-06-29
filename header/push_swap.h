@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/28 12:10:55 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/29 09:49:54 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,13 @@ typedef struct  s_ps
 	t_stack		*s_b;
     char        **argv;
     char        **tmp;
-    int         fsize;
     int         *array;
+    int         fsize;
     int         middle;
     int         pivot;
     int         top;
     int         chunk_s;
     int         nbr;
-    int         err;
     int         i;
     int         j;
     int         idx;

@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:15:37 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/28 15:57:46 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/29 10:55:04 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	_fill_stack_(t_ps *ps)
 void	_the_start_(t_ps *ps)
 {
 	_fill_stack_(ps);
-	_sorting_the_stack_(ps);
+	if (!_already_sorted(ps))
+		_sorting_the_stack_(ps);
 }
 
 void	_init_vars_(t_ps *ps)
@@ -54,31 +55,12 @@ void	_init_vars_(t_ps *ps)
 int main(int argc, char **argv)
 {
     t_ps *ps;
-	// int i = -1;
-
+	
     ps = malloc(sizeof(t_ps));
-	ps->err = 0;
 	_init_vars_(ps);
-	if (_get_args_size(ps, argv, argc) || _get_args_(ps, argv, argc))
+	if (argc < 2 || _get_args_size(ps, argv, argc) || _get_args_(ps, argv, argc))
 		_exit_error_(ps);
 	_the_start_(ps);
-	// puts("array :");
-	// i = -1;
-	// while (++i < ps->size_a)
-	// 	printf("| %d ", ps->array[i]);
-	// puts("");
-	// puts("Stack a");
-	// while (ps->s_a)
-	// {
-	// 	printf("- %d ", ps->s_a->num);
-	// 	ps->s_a = ps->s_a->next;
-	// }
-	// puts("\nb :");
-	// while (ps->s_b)
-	// {
-	// 	printf("- %d ", ps->s_b->num);
-	// 	ps->s_b = ps->s_b->next;
-	// }
 	_clear_all_(ps);
     return (0);						
 }

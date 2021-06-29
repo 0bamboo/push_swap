@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:52:42 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/28 15:56:46 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/29 10:54:35 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void    _empty_stack_(t_stack *st)
     }
 }
 
+
+
 void	_clear_all_(t_ps *ps)
 {
 	int	i;
@@ -59,6 +61,13 @@ void	_clear_all_(t_ps *ps)
 		_empty_stack_(ps->s_a);
 	if (ps->array)
 		free(ps->array);
+	if (ps->tmp)
+	{
+		while (ps->tmp[++i])
+			free(ps->tmp[i]);
+		free(ps->tmp);
+	}
+	i = -1;
 	if (ps->argv)
 	{
 		while (ps->argv[++i])
@@ -70,7 +79,7 @@ void	_clear_all_(t_ps *ps)
 
 void	_exit_error_(t_ps *ps)
 {
-	write(1, "Error\n", 6);
 	_clear_all_(ps);
+	write(1, "Error\n", 6);
 	exit (0);
 }

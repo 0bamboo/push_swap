@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 11:31:45 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/28 11:32:04 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/29 10:36:05 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,6 @@ void	_which_instructions_(t_ps *ps, int num)
 	}
 }
 
-int 	_is_the_smallest_(t_stack **st, int small)
-{
-	t_stack *curr;
-
-	curr = (*st);
-	while (curr)
-	{
-		if (curr->num < small)
-			return 0;
-		curr = curr->next;
-	}
-	return 1;
-}
-
 void	_look_for_num(t_ps *ps)
 {
 	t_stack *curr;
@@ -52,7 +38,7 @@ void	_look_for_num(t_ps *ps)
 	i = 0;
 	while (curr)
 	{
-		if (curr->num < ps->pivot/*&& _is_the_smallest_(&ps->s_a, curr->num)*/)
+		if (curr->num < ps->pivot)
 		{
 			ps->idx = i;
 			ps->nbr = curr->num;
