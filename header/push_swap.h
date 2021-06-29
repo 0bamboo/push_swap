@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/29 13:51:12 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/29 15:27:06 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include "../libft/libft.h"
+// # include "../srcs/get_next_line.h"
 
 #define MAX_INT 2147483647
 #define MIN_INT -2147483648
@@ -38,6 +39,7 @@ typedef struct  s_ps
     char        **argv;
     char        **tmp;
     int         *array;
+    char        *input;
     int         fsize;
     int         middle;
     int         pivot;
@@ -53,6 +55,7 @@ typedef struct  s_ps
     int         right;
 }				t_ps;
 
+int     get_next_line(int fd, char **line);
 void    _push_front_(t_stack **st, int num);
 int		_already_sorted(t_ps *ps);
 void	_init_vars_(t_ps *ps);
