@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 10:12:35 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/29 10:11:33 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/30 19:25:28 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		_get_args_size(t_ps *ps, char **args, int argc)
 			if (_check_args_(ps->tmp[ps->j]))
 				return (1);
 			free(ps->tmp[ps->j]);
+			ps->tmp[ps->j] = NULL;
 		}
 		free(ps->tmp);
 		ps->tmp = NULL;
