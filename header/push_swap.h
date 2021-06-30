@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/29 15:27:06 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/30 15:48:10 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct  s_ps
     int         *array;
     char        *input;
     int         fsize;
+	int			sorted;
     int         middle;
     int         pivot;
     int         top;
@@ -56,13 +57,16 @@ typedef struct  s_ps
 }				t_ps;
 
 int     get_next_line(int fd, char **line);
+int     _check_line_(t_ps *ps);
 void    _push_front_(t_stack **st, int num);
 int		_already_sorted(t_ps *ps);
+void	_check_if_stack_sorted_(t_ps *ps);
 void	_init_vars_(t_ps *ps);
+void	_is_sorted_(t_ps *ps);
 void	_look_for_num(t_ps *ps);
 void	_last_step_(t_ps *ps);
 void	_the_start_(t_ps *ps);
-void	_fill_stack_(t_ps *ps);
+void	_fill_stack_(t_ps *ps, int ps_ch);
 int		_get_size_of_tab(char **ch);
 int 	_is_the_smallest_(t_stack **st, int small);
 void	_which_instructions_(t_ps *ps, int num);
@@ -95,23 +99,22 @@ void	_sorting_the_array_(t_ps *ps);
 void	_quick_sort_(int *array, int left, int right);
 void	_rotate_(t_ps *ps, char rule);
 void	_insertion_sort_(t_ps *ps);
-void	_fill_stack_(t_ps *ps);
 int		_get_args_size(t_ps *ps, char **args, int argc);
 void    _sorting_the_stack_(t_ps *ps);
 int     _get_args_(t_ps *ps, char **args, int argc);
 int		_get_args_size(t_ps *ps, char **args, int argc);
 int     _get_args_(t_ps *ps, char **args, int argc);
 void    _the_start_(t_ps *ps);
-void    _ra_(t_ps *ps);
-void    _rb_(t_ps *ps);
-void    _rr_(t_ps *ps);
-void    _rra_(t_ps *ps);
-void    _rrb_(t_ps *ps);
-void    _rrr_(t_ps *ps);
-void    _pa_(t_ps *ps);
-void    _pb_(t_ps *ps);
-void    _sa_(t_ps *ps);
-void    _sb_(t_ps *ps);
-void    _ss_(t_ps *ps);
+void    _ra_(t_ps *ps, int print);
+void    _rb_(t_ps *ps, int print);
+void    _rr_(t_ps *ps, int print);
+void    _rra_(t_ps *ps, int print);
+void    _rrb_(t_ps *ps, int print);
+void    _rrr_(t_ps *ps, int print);
+void    _pa_(t_ps *ps, int print);
+void    _pb_(t_ps *ps, int print);
+void    _sa_(t_ps *ps, int print);
+void    _sb_(t_ps *ps, int print);
+void    _ss_(t_ps *ps, int print);
 
 #endif

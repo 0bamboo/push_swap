@@ -12,33 +12,38 @@
 
 #include "../header/push_swap.h"
 
-void	_ra_(t_ps *ps)
+void	_ra_(t_ps *ps, int print)
 {
 	_rotate_(ps, 'a');
-	puts("ra");
+	if (print)
+		puts("ra");
 }
 
-void	_rb_(t_ps *ps)
+void	_rb_(t_ps *ps, int print)
 {
 	_rotate_(ps, 'b');
-	puts("rb");
+	if (print)
+		puts("rb");
 }
 
-void	_rr_(t_ps *ps)
+void	_rr_(t_ps *ps, int print)
 {
-	_ra_(ps);
-	_rb_(ps);
-	puts("rr");
+	_ra_(ps, 0);
+	_rb_(ps, 0);
+	if (print)
+		puts("rr");
 }
 
-void	_rra_(t_ps *ps)
+void	_rra_(t_ps *ps, int print)
 {
 	_reverse_rotate_(ps, 'a');
-	puts("rra");
+	if (print)
+		puts("rra");
 }
 
-void	_rrb_(t_ps *ps)
+void	_rrb_(t_ps *ps, int print)
 {
 	_reverse_rotate_(ps, 'b');
-	puts("rrb");
+	if (print)
+		puts("rrb");
 }

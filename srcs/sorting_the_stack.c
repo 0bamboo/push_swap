@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 10:12:04 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/29 10:39:02 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/06/30 15:50:36 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@ void	_sort_three_nums(t_ps *ps)
 	second = first->next;
 	third = second->next;
 	if (first->num > second->num && first->num < third->num)
-		_sa_(ps);
+		_sa_(ps, 1);
 	else if (first->num > second->num && second->num > third->num)
 	{
-		_sa_(ps);
-		_rra_(ps);
+		_sa_(ps, 1);
+		_rra_(ps, 1);
 	}
 	else if (third->num > second->num && first->num > third->num)
-		_ra_(ps);
+		_ra_(ps, 1);
 	else if (first->num < second->num && first->num > third->num)
-		_rra_(ps);
+		_rra_(ps, 1);
 	else if (third->num < second->num && third->num > first->num)
 	{
-		_sa_(ps);
-		_ra_(ps);
+		_sa_(ps, 1);
+		_ra_(ps, 1);
 	}
 }
 
@@ -53,7 +53,7 @@ void	_sort_small_sizes_(t_ps *ps)
 	}
 	_sort_three_nums(ps);
 	while (_get_size_(&ps->s_b))
-		_pa_(ps);
+		_pa_(ps, 1);
 }
 
 void	_sort_last_chunk_(t_ps *ps)
@@ -71,7 +71,7 @@ void	_sort_last_chunk_(t_ps *ps)
 	_sort_three_nums(ps);
 	_last_step_(ps);
 	while (_get_size_(&ps->s_b))
-		_pa_(ps);
+		_pa_(ps, 1);
 }
 
 void	_sort_large_sizes_(t_ps *ps, int nbr_ch)
@@ -104,7 +104,7 @@ void	_sort_large_sizes_(t_ps *ps, int nbr_ch)
 void	_sorting_the_stack_(t_ps *ps)
 {
 	if (ps->size_a == 2 && ps->s_a->num > ps->s_a->next->num)
-		_sa_(ps);
+		_sa_(ps, 1);
 	else if (ps->size_a == 3)
 		_sort_three_nums(ps);
 	else if (ps->size_a > 3 && ps->size_a <= 10)

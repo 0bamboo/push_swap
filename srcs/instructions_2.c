@@ -12,43 +12,49 @@
 
 #include "../header/push_swap.h"
 
-void	_pa_(t_ps *ps)
+void	_pa_(t_ps *ps, int print)
 {
 	_push_to_stack_(ps, 'a');
-	puts("pa");
+	if (print)
+		puts("pa");
 }
 
-void	_pb_(t_ps *ps)
+void	_pb_(t_ps *ps, int print)
 {
 	_push_to_stack_(ps, 'b');
-	puts("pb");
+	if (print)
+		puts("pb");
 }
 
 
 
-void	_sa_(t_ps *ps)
+void	_sa_(t_ps *ps, int print)
 {
 	_swap_(&ps->s_a);
-	puts("sa");
+	if (print)
+		puts("sa");
 }
 
 
-void	_sb_(t_ps *ps)
+void	_sb_(t_ps *ps, int print)
 {
 	_swap_(&ps->s_b);
-	puts("sb");
+	if (print)
+		puts("sb");
 }
 
-void	_ss_(t_ps *ps)
+void	_ss_(t_ps *ps, int print)
 {
-	_sa_(ps);
-	_sb_(ps);
-	puts("ss");
+	_sa_(ps, 0);
+	_sb_(ps, 0);
+	if (print)
+		puts("ss");
 }
 
-void	_rrr_(t_ps *ps)
+void	_rrr_(t_ps *ps, int print)
 {
-	_rra_(ps);
-	_rrb_(ps);
-	puts("rrr");
+	_rra_(ps, 0);
+	_rrb_(ps, 0);
+	if (print)
+		puts("rrr");
 }
