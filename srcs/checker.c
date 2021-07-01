@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 10:59:56 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/07/01 12:40:40 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/01 22:04:15 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	if (_get_args_size(ps, argv, argc) || _get_args_(ps, argv, argc))
 		_exit_error_(ps);
 	_fill_stack_(ps, 0);
-	while (get_next_line(0, &ps->input))
+	while (get_next_line(0, &ps->input) > 0)
 	{
 		if (_check_line_(ps))
 			_exit_error_(ps);

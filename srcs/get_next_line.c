@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/01 15:49:10 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/07/01 12:51:29 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/01 22:06:38 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,28 +72,32 @@ char	*_append_to_line_(char *s_tab, char *buff)
 	return (s_tab);
 }
 
+int	_norm_(t_gnl *gnl, int fd)
+{
+	gnl->byt = read(fd, gnl->buff, gnl->b_size);
+	return (gnl->byt);
+}
+
 int	get_next_line(int fd, char **line)
 {
 	static char		*s_tab;
-	char			*buff;
-	int				byt;
-	int				b_size;
+	t_gnl			gnl;
 
-	b_size = 1;
-	buff = (char *)malloc(b_size + 1);
-	if (fd < 0 || b_size <= 0
-		|| !line || !buff)
+	gnl.b_size = 1;
+	gnl.buff = (char *)malloc(gnl.b_size + 1);
+	if (fd < 0 || gnl.b_size <= 0
+		|| !line || !gnl.buff)
 		return (ft_help(line, &s_tab, -1));
-	while ((byt = read(fd, buff, b_size)) > 0)
+	while ( _norm_(&gnl, fd) > 0)
 	{
-		buff[byt] = '\0';
+		gnl.buff[gnl.byt] = '\0';
 		if (s_tab == NULL)
-			s_tab = ft_strdup(buff);
+			s_tab = ft_strdup(gnl.buff);
 		else
-			s_tab = _append_to_line_(s_tab, buff);
+			s_tab = _append_to_line_(s_tab, gnl.buff);
 		if (ft_strchr(s_tab, '\n'))
 			break ;
 	}
-	free(buff);
-	return (ft_help(line, &s_tab, byt));
+	free(gnl.buff);
+	return (ft_help(line, &s_tab, gnl.byt));
 }

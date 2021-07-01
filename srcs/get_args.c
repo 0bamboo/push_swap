@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 10:12:35 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/07/01 12:48:50 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/01 22:03:50 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	_get_args_(t_ps *ps, char **args, int argc)
 	ps->i = 1;
 	ps->idx = 0;
 	ps->argv = (char **)malloc(sizeof(char *) * ps->fsize);
-	if (ps->argv)
+	if (!ps->argv)
 		return (1);
 	while (ps->i < argc)
 	{

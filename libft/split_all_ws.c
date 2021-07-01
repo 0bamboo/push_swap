@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 14:25:20 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/07/01 12:36:34 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/01 21:59:15 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	**_split_all(char const *s)
 		while (*s && _is_white_space(*s))
 			s++;
 		p[n.i] = (char *)malloc(sizeof(char) * (_len_words(s) + 1));
-		if (p[n.i])
+		if (!p[n.i])
 			return (ft_free(p, n.size));
 		n.j = 0;
 		while (*s && !(_is_white_space(*s)))

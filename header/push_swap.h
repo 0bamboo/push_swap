@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/30 15:48:10 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/01 21:44:02 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ typedef struct  s_stack
     struct s_stack  *next;  
     struct s_stack  *prev;   
 }               t_stack;
+
+typedef struct s_gnl
+{
+    int     b_size;
+    int     byt;
+    char    *buff;
+}               t_gnl;
 
 typedef struct  s_ps
 {
