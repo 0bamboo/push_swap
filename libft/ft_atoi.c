@@ -6,12 +6,24 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:41:44 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/07/01 12:04:19 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/01 13:19:09 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+
+char	**ft_free(char **ptr, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < size)
+		free(ptr[i]);
+	free(ptr);
+	ptr = NULL;
+	return (NULL);
+}
 
 int	if_long(long a, int sign)
 {
