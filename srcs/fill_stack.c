@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 13:50:03 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/30 15:36:56 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/01 12:47:22 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@ void	_fill_stack_(t_ps *ps, int ps_ch)
 	long	tmp;
 
 	i = 0;
-	if((ps->size_a = ps->fsize - 1) == 1 && ps_ch == 1)
+	ps->size_a = ps->fsize - 1;
+	if (ps->size_a == 1 && ps_ch == 1)
 		exit(0);
 	ps->array = malloc(sizeof(int) * ps->size_a);
+	if (!ps->array)
+		_exit_error_(ps);
 	while (i < ps->size_a)
 	{
 		tmp = _atoi_mod_(ps->argv[i]);

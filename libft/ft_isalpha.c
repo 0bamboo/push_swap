@@ -6,13 +6,13 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:54:45 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/05/18 00:44:20 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/01 11:59:48 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
 	return ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
 }

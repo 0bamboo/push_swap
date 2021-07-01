@@ -6,13 +6,13 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/01 15:49:10 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/29 15:41:03 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/01 12:51:29 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void		ft_cleanall(char **s_tab)
+void	ft_cleanall(char **s_tab)
 {
 	if (s_tab && *s_tab)
 	{
@@ -21,7 +21,7 @@ void		ft_cleanall(char **s_tab)
 	}
 }
 
-int			ft_checkline(char **s_tab, char **line, int byt)
+int	ft_checkline(char **s_tab, char **line, int byt)
 {
 	int			i;
 	char		*tmp2;
@@ -50,7 +50,7 @@ int			ft_checkline(char **s_tab, char **line, int byt)
 	return (1);
 }
 
-int			ft_help(char **line, char **s_tab, int byt)
+int	ft_help(char **line, char **s_tab, int byt)
 {
 	if (line)
 		*line = ft_strdup("");
@@ -72,7 +72,7 @@ char	*_append_to_line_(char *s_tab, char *buff)
 	return (s_tab);
 }
 
-int			get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char		*s_tab;
 	char			*buff;
@@ -80,8 +80,9 @@ int			get_next_line(int fd, char **line)
 	int				b_size;
 
 	b_size = 1;
-	if (fd < 0 || b_size <= 0 ||
-			!line || !(buff = (char *)malloc(b_size + 1)))
+	buff = (char *)malloc(b_size + 1);
+	if (fd < 0 || b_size <= 0
+		|| !line || !buff)
 		return (ft_help(line, &s_tab, -1));
 	while ((byt = read(fd, buff, b_size)) > 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:51:00 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/05/19 15:05:31 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/01 12:23:37 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t		j;
 	char		*sub;
 
-	if (!s || !(sub = (char *)malloc(len + 1)))
+	if (!s)
+		return (NULL);
+	sub = (char *)malloc(len + 1);
+	if (!sub)
 		return (NULL);
 	if (start > ft_strlen(s))
 		return (ft_strdup(""));

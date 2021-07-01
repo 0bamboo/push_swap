@@ -6,15 +6,15 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 10:12:35 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/30 19:25:28 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/01 12:48:50 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int		_get_args_size(t_ps *ps, char **args, int argc)
+int	_get_args_size(t_ps *ps, char **args, int argc)
 {
-	int size;
+	int	size;
 
 	ps->i = 1;
 	size = 0;
@@ -44,7 +44,8 @@ int	_get_args_(t_ps *ps, char **args, int argc)
 {
 	ps->i = 1;
 	ps->idx = 0;
-	if (!(ps->argv = (char **)malloc(sizeof(char *) * ps->fsize)))
+	ps->argv = (char **)malloc(sizeof(char *) * ps->fsize);
+	if (ps->argv)
 		return (1);
 	while (ps->i < argc)
 	{
