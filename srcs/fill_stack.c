@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 13:50:03 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/07/01 12:47:22 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/02 11:32:05 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ void	_fill_stack_(t_ps *ps, int ps_ch)
 	}
 	if (_check_dup_(&ps->s_a))
 		_exit_error_(ps);
+}
+
+int	_get_first_element(t_stack **st)
+{
+	return ((*st)->num);
 }
 
 void	_the_start_(t_ps *ps)

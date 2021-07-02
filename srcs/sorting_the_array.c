@@ -35,17 +35,17 @@ void	_insertion_sort_(t_ps *ps)
 void	_swap_nums_(int *a, int *b)
 {
 	int	tmp;
-	
+
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
 }
 
-int		_partition_(int *array, int left, int right)
+int	_partition_(int *array, int left, int right)
 {
-	int		pivot;
-	int		i;
-	int		j;
+	int	pivot;
+	int	i;
+	int	j;
 
 	i = left - 1;
 	j = i;
@@ -65,7 +65,7 @@ int		_partition_(int *array, int left, int right)
 void	_quick_sort_(int *array, int left, int right)
 {
 	int		pivot;
-	
+
 	if (left < right)
 	{
 		pivot = _partition_(array, left, right);

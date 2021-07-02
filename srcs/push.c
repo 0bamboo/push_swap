@@ -6,16 +6,16 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:43:46 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/26 16:27:47 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/02 11:13:54 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void    _pop_front_(t_stack **st)
+void	_pop_front_(t_stack **st)
 {
-	t_stack *pop;
-	t_stack *curr;
+	t_stack	*pop;
+	t_stack	*curr;
 
 	pop = (*st);
 	if (!pop)
@@ -49,24 +49,24 @@ void	_pop_back_(t_stack **st)
 	curr = NULL;
 }
 
-void    _push_front_(t_stack **st, int num)
+void	_push_front_(t_stack **st, int num)
 {
-    t_stack *curr;
+	t_stack	*curr;
 
-    curr = malloc(sizeof(t_stack));
-    curr->prev = NULL;
-    curr->num = num;
-    if ((*st))
-    {
-        curr->next = (*st);
-        (*st)->prev = curr;
+	curr = malloc(sizeof(t_stack));
+	curr->prev = NULL;
+	curr->num = num;
+	if ((*st))
+	{
+		curr->next = (*st);
+		(*st)->prev = curr;
 		(*st) = curr;
-    }
-    else
-    {
-        curr->next = NULL;
-        (*st) = curr;
-    }
+	}
+	else
+	{
+		curr->next = NULL;
+		(*st) = curr;
+	}
 }
 
 void	_push_back_(t_stack **st, int num)
@@ -92,7 +92,7 @@ void	_push_back_(t_stack **st, int num)
 
 void	_push_to_stack_(t_ps *ps, char rule)
 {
-	int		tmp;
+	int	tmp;
 
 	if (ps->s_b && rule == 'a')
 	{

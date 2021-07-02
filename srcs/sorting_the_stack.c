@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 10:12:04 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/30 15:50:36 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/02 11:26:06 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	_sort_three_nums(t_ps *ps)
 {
-	t_stack *first;
-	t_stack *second;
-	t_stack *third;
-	
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*third;
+
 	first = ps->s_a;
 	second = first->next;
 	third = second->next;
@@ -49,7 +49,7 @@ void	_sort_small_sizes_(t_ps *ps)
 		num = _get_smallest_num(ps);
 		_which_instructions_(ps, num);
 		if (_get_size_(&ps->s_a) == 3)
-			break;
+			break ;
 	}
 	_sort_three_nums(ps);
 	while (_get_size_(&ps->s_b))
@@ -64,9 +64,9 @@ void	_sort_last_chunk_(t_ps *ps)
 	while (1)
 	{
 		num = _get_smallest_num(ps);
-		_which_instructions_(ps, num);;
+		_which_instructions_(ps, num);
 		if (_get_size_(&ps->s_a) == 3)
-			break;
+			break ;
 	}
 	_sort_three_nums(ps);
 	_last_step_(ps);
@@ -76,9 +76,9 @@ void	_sort_last_chunk_(t_ps *ps)
 
 void	_sort_large_sizes_(t_ps *ps, int nbr_ch)
 {
-	int i;
-	int j;
-	int end;
+	int	i;
+	int	j;
+	int	end;
 
 	ps->chunk_s = ps->size_a / nbr_ch;
 	end = ps->chunk_s;

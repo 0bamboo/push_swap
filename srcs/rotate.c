@@ -6,13 +6,13 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:44:29 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/05/31 14:59:55 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/02 11:18:58 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int		_get_last_element_(t_stack **st)
+int	_get_last_element_(t_stack **st)
 {
 	t_stack		*curr;
 
@@ -25,24 +25,26 @@ int		_get_last_element_(t_stack **st)
 
 int	_get_size_(t_stack **st)
 {
-	int	size;
+	int		size;
 	t_stack	*curr;
 
 	size = 0;
 	curr = (*st);
 	if (curr)
+	{
 		while (curr)
 		{
 			curr = curr->next;
 			size++;
 		}
+	}
 	return (size);
 }
 
 void	_swap_(t_stack **st)
 {
-	t_stack *curr;
-	t_stack *tmp;
+	t_stack	*curr;
+	t_stack	*tmp;
 	int		t;
 	int		size;
 
@@ -81,7 +83,7 @@ void	_reverse_rotate_(t_ps *ps, char rule)
 void	_rotate_(t_ps *ps, char rule)
 {
 	int		tmp;
-	
+
 	if (rule == 'a' && ps->s_a)
 	{
 		if (_get_size_(&ps->s_a) < 2)

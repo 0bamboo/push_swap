@@ -6,28 +6,26 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 10:17:25 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/30 15:51:50 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/02 11:29:03 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int		_get_size_of_tab(char **ch)
+void	_rrr_(t_ps *ps, int print)
 {
-	int size;
-
-	size = -1;
-	if (ch)
-		while (ch[++size]);
-	return (size);
+	_rra_(ps, 0);
+	_rrb_(ps, 0);
+	if (print)
+		puts("rrr");
 }
 
-int		_already_sorted(t_ps *ps)
+int	_already_sorted(t_ps *ps)
 {
-	int		i;
-	int		j;
-	int		check;
-	
+	int	i;
+	int	j;
+	int	check;
+
 	i = -1;
 	while (++i < ps->size_a)
 	{
@@ -43,9 +41,9 @@ int		_already_sorted(t_ps *ps)
 	return (1);
 }
 
-int		_get_smallest_num(t_ps *ps)
+int	_get_smallest_num(t_ps *ps)
 {
-	t_stack *curr;
+	t_stack	*curr;
 	int		small;
 	int		i;
 
@@ -65,14 +63,9 @@ int		_get_smallest_num(t_ps *ps)
 	return (small);
 }
 
-int		_get_first_element(t_stack **st)
+int	_get_largest_num(t_ps *ps)
 {
-	return ((*st)->num);
-}
-
-int		_get_largest_num(t_ps *ps)
-{
-	t_stack *curr;
+	t_stack	*curr;
 	int		large;
 	int		i;
 
@@ -94,7 +87,7 @@ int		_get_largest_num(t_ps *ps)
 
 void	_last_step_(t_ps *ps)
 {
-	int		num;
+	int	num;
 
 	ps->middle = _get_size_(&ps->s_b) / 2;
 	while (1)
@@ -106,7 +99,7 @@ void	_last_step_(t_ps *ps)
 			if (num == ps->top)
 			{
 				_pa_(ps, 1);
-				break;
+				break ;
 			}
 			else if (ps->idx <= ps->middle)
 				_rb_(ps, 1);
@@ -114,6 +107,6 @@ void	_last_step_(t_ps *ps)
 				_rrb_(ps, 1);
 		}
 		if (_get_size_(&ps->s_b) == 0)
-			break;
+			break ;
 	}
 }

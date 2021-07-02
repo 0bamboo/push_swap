@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:52:42 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/06/30 19:40:28 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/02 11:23:17 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ long	_atoi_mod_(const char *str)
 	a = 0;
 	sign = 1;
 	i = 0;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' ||
-			str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
 		i++;
 	if (str[i] == '+')
 		i++;
@@ -39,18 +39,17 @@ long	_atoi_mod_(const char *str)
 	return (a * sign);
 }
 
-void    _empty_stack_(t_stack *st)
+void	_empty_stack_(t_stack *st)
 {
-    t_stack *tmp;
-    while (st)
-    {
-        tmp = st;
-        st = st->next;
-        free(tmp);
-    }
+	t_stack	*tmp;
+
+	while (st)
+	{
+		tmp = st;
+		st = st->next;
+		free(tmp);
+	}
 }
-
-
 
 void	_clear_all_(t_ps *ps)
 {
@@ -79,6 +78,12 @@ void	_clear_all_(t_ps *ps)
 	if (ps->input)
 		free(ps->input);
 	free(ps);
+}
+
+int	_norm_(t_gnl *gnl, int fd)
+{
+	gnl->byt = read(fd, gnl->buff, gnl->b_size);
+	return (gnl->byt);
 }
 
 void	_exit_error_(t_ps *ps)

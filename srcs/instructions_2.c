@@ -26,15 +26,12 @@ void	_pb_(t_ps *ps, int print)
 		puts("pb");
 }
 
-
-
 void	_sa_(t_ps *ps, int print)
 {
 	_swap_(&ps->s_a);
 	if (print)
 		puts("sa");
 }
-
 
 void	_sb_(t_ps *ps, int print)
 {
@@ -49,12 +46,4 @@ void	_ss_(t_ps *ps, int print)
 	_sb_(ps, 0);
 	if (print)
 		puts("ss");
-}
-
-void	_rrr_(t_ps *ps, int print)
-{
-	_rra_(ps, 0);
-	_rrb_(ps, 0);
-	if (print)
-		puts("rrr");
 }
