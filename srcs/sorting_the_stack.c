@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 10:12:04 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/07/02 11:26:06 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/02 15:52:36 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	_sorting_the_stack_(t_ps *ps)
 	else if (ps->size_a > 3 && ps->size_a <= 10)
 		_sort_small_sizes_(ps);
 	else if (ps->size_a > 10 && ps->size_a <= 100)
-		_sort_large_sizes_(ps, 4);
+		_sort_large_sizes_(ps, 5);
 	else
-		_sort_large_sizes_(ps, 7);
+		_sort_large_sizes_(ps, 12);
 }

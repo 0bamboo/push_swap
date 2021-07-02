@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 11:31:45 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/07/02 11:30:30 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/02 15:58:14 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	_which_instructions_(t_ps *ps, int num)
 		if (num == ps->top)
 		{
 			_pb_(ps, 1);
+			ps->middle = _get_size_(&ps->s_a) / 2;
 			break ;
 		}
 		else if (ps->idx <= ps->middle)

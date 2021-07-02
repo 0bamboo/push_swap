@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 10:17:25 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/07/02 11:29:03 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/02 15:59:08 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void	_last_step_(t_ps *ps)
 			if (num == ps->top)
 			{
 				_pa_(ps, 1);
+				ps->middle = _get_size_(&ps->s_b) / 2;
 				break ;
 			}
 			else if (ps->idx <= ps->middle)
