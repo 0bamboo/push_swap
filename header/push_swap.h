@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:16:31 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/07/02 11:06:48 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/03 09:32:41 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void					_is_sorted_(t_ps *ps);
 void					_look_for_num(t_ps *ps);
 void					_last_step_(t_ps *ps);
 void					_the_start_(t_ps *ps);
-void					_fill_stack_(t_ps *ps, int ps_ch);
+void					_fill_stack_(t_ps *ps);
 int						_is_the_smallest_(t_stack **st, int small);
 void					_which_instructions_(t_ps *ps, int num);
 void					_sort_small_sizes_(t_ps *ps);

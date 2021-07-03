@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:44:02 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/07/01 12:45:13 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/03 11:06:55 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,11 @@ int	_check_dup_(t_stack **s_a)
 int	_check_args_(char *args)
 {
 	int	j;
+	int	len;
 
 	j = -1;
-	while (args[++j])
+	len = ft_strlen(args);
+	while (++j <= len)
 	{
 		if (_checker_(args, j))
 			return (FAILURE);
