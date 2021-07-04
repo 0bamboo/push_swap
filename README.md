@@ -51,6 +51,8 @@ The stack (a) holds unsorted random numbers, and you have to sort them in an asc
 
 - If you want to see the visualiation of sorting check this account <a href="https://github.com/o-reo/push_swap_visualizer">visualizer . </a>
 
+<img src="https://github.com/nowl01/push_swap/blob/master/subject/visualizer.png">
+
 ### How to run:
 - Run ->**make**<- command .
 - Then run ->**./push_swap**<- with list of numbers of your choice .
