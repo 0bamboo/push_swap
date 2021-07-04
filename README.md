@@ -56,6 +56,7 @@ The stack (a) holds unsorted random numbers, and you have to sort them in an asc
 ### How to run:
 - Run ->**make**<- command .
 - Then run ->**./push_swap**<- with list of numbers of your choice .
+- if you want to generate random numbers run ->**python3 generate_random_nums.py**<- and choose the size you want...
 
 ## Checker :
 
