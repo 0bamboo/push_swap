@@ -6,7 +6,7 @@
 /*   By: abdait-m <abdait-m@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 14:15:37 by abdait-m          #+#    #+#             */
-/*   Updated: 2021/07/02 11:15:35 by abdait-m         ###   ########.fr       */
+/*   Updated: 2021/07/15 17:38:25 by abdait-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 	if (!ps)
 		return (1);
 	_init_vars_(ps);
+
 	if (argc < 2 || _get_args_size(ps, argv, argc)
 		|| _get_args_(ps, argv, argc))
 		_exit_error_(ps);
